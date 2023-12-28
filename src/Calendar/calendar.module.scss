@@ -1,0 +1,37 @@
+.calendarMain {
+  background-color: chocolate;
+  width: 700px;
+  margin: auto;
+  // display: grid;
+  // justify-content: center;
+
+  text-align: center;
+}
+
+.daysOfWeek {
+  // background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border: 1px solid black;
+}
+
+.dayOfWeek {
+  flex: 1;
+}
+
+.gridNumberDays {
+  // margin: 0;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  padding: 1rem 2rem;
+}
+
+.gridNumberDay {
+  // border: 1px solid black;
+  text-align: center;
+  align-items: center;
+  padding: 1rem;
+
+  // padding: 1rem 2rem;
+}
