@@ -9,12 +9,15 @@ import {
   subMonths,
 } from 'date-fns';
 import { useState } from 'react';
+import Modal from 'react-modal';
+import EventModal from '../DetailPage/EventModal';
 import { sportData } from '../sportData';
 import styles from './calendar.module.scss';
 
 export default function Calendar() {
   const [eventList, setEventList] = useState(sportData.data);
   const [monthNavigation, setMonthNavigation] = useState(new Date());
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const currentDate = new Date();
   const month = currentDate.toLocaleString('en-AT', { month: 'long' });
   const year = currentDate.getFullYear();
@@ -92,6 +95,10 @@ export default function Calendar() {
           );
         })}
       </section>
+      <EventModal
+        isOpen={modalIsOpen}
+        closeModal={() => setModalIsOpen(false)}
+      />
     </main>
   );
 }
