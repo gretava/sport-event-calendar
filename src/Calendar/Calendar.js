@@ -10,6 +10,7 @@ import {
 } from 'date-fns';
 import { useState } from 'react';
 import Modal from 'react-modal';
+import AddEvent from '../AddEvent/AddEvent';
 import EventModal from '../DetailPage/EventModal';
 import { sportData } from '../sportData';
 import styles from './calendar.module.scss';
@@ -19,6 +20,7 @@ export default function Calendar() {
   const [monthNavigation, setMonthNavigation] = useState(new Date());
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState(null);
+  const [addEventOpen, setAddEventOpen] = useState(false);
   const currentDate = new Date();
   const month = currentDate.toLocaleString('en-AT', { month: 'long' });
   const year = currentDate.getFullYear();
@@ -56,9 +58,20 @@ export default function Calendar() {
     }
   };
 
+  const handleAddEvent = (newEvent) => {
+    setEventList((prevEventList) => [...prevEventList, newEvent]);
+  };
+
+  const handleOpenAddEvent = () => {
+    setAddEventOpen(true);
+  };
+
   return (
     <main className={styles.calendarMain}>
       <section className={styles.monthHeader}>
+        <button onClick={() => handleOpenAddEvent()} className={styles.navBtn}>
+          Add Event
+        </button>
         <button onClick={prevMonth} className={styles.navBtn}>
           Prev
         </button>
@@ -114,6 +127,14 @@ export default function Calendar() {
         closeModal={() => setModalIsOpen(false)}
         eventData={selectedEventData}
       />
+      {addEventOpen && (
+        <AddEvent
+          onAddEvent={handleAddEvent}
+          setAddEventOpen={setAddEventOpen}
+          eventList={eventList}
+          setEventList={setEventList}
+        />
+      )}
     </main>
   );
 }
