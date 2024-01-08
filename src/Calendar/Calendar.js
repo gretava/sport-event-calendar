@@ -18,6 +18,7 @@ export default function Calendar() {
   const [eventList, setEventList] = useState(sportData.data);
   const [monthNavigation, setMonthNavigation] = useState(new Date());
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedEventData, setSelectedEventData] = useState(null);
   const currentDate = new Date();
   const month = currentDate.toLocaleString('en-AT', { month: 'long' });
   const year = currentDate.getFullYear();
@@ -44,6 +45,17 @@ export default function Calendar() {
     setMonthNavigation(addMonths(monthNavigation, 1));
   };
 
+  const handleDateClickAndShowEvents = (day) => {
+    const formattedDate = format(day, 'yyyy-MM-dd');
+    const eventsOnDay = eventList.filter(
+      (event) => event.dateVenue === formattedDate,
+    );
+    if (eventsOnDay.length > 0) {
+      setModalIsOpen(true);
+      setSelectedEventData(eventsOnDay[0]);
+    }
+  };
+
   return (
     <main className={styles.calendarMain}>
       <section className={styles.monthHeader}>
@@ -66,38 +78,41 @@ export default function Calendar() {
         {Array.from({ length: startingDayIndex }).map((_, index) => (
           <div key={`empty-${index}`} />
         ))}
-        {allDaysInMonth.map((day, index) => {
-          const formattedDate = format(day, 'yyyy-MM-dd');
+        {allDaysInMonth.map((day, index) => (
+          <div
+            key={index}
+            onClick={() => handleDateClickAndShowEvents(day)}
+            className={styles.gridNumberDay}
+          >
+            {format(day, 'd')}
+
+            {eventList.map((event, eventIndex) => {
+              const formattedDate = format(day, 'yyyy-MM-dd');
+              if (event.dateVenue === formattedDate) {
+                return (
+                  <div key={`event-${eventIndex}`}>
+                    <p>
+                      Event: {event.homeTeam?.name} vs {event.awayTeam?.name}
+                    </p>
+                    {/* <p>Time: {event.timeVenueUTC}</p> */}
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+        ))}
+
+        {/* //
           // const eventData = sportData.data.find(
           //   (event) => event.dateVenue === formattedDate,
-          const eventsOnDay = eventList.filter(
-            (event) => event.dateVenue === formattedDate,
-          );
-          // console.log('Formatted Date:', formattedDate);
-          // console.log(
-          //   'All Date Venues:',
-          //   sportData.data.map((event) => event.dateVenue),
-          // );
-          // console.log('Event Data:', eventData);
-
-          return (
-            <div className={styles.gridNumberDay} key={index}>
-              {format(day, 'd')}
-              {eventsOnDay.map((event, eventIndex) => (
-                <div key={`event-${eventIndex}`}>
-                  <p>
-                    Event: {event.homeTeam?.name} vs {event.awayTeam?.name}
-                  </p>
-                  {/* <p>Time: {event.timeVenueUTC}</p> */}
-                </div>
-              ))}
-            </div>
-          );
-        })}
+          // const eventsOnDay = eventList.filter(
+            // (event) => event.dateVenue === formattedDate, */}
       </section>
       <EventModal
         isOpen={modalIsOpen}
         closeModal={() => setModalIsOpen(false)}
+        eventData={selectedEventData}
       />
     </main>
   );
