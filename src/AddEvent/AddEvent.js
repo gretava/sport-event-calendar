@@ -6,19 +6,38 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
     awayTeamName: '',
     season: '',
     status: '',
+    result: '',
     dateVenue: '',
   });
-  // const [homeTeamName, setHomeTeamName] = useState('');
-  // const [awayTeamName, setAwayTeamName] = useState('');
-  // const [season, setSeason] = useState('');
-  // const [status, setStatus] = useState('');
-  // const [dateVenue, setDateVenue] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('event', newEvent);
 
-    onAddEvent(newEvent);
+    const newEventObject = {
+      homeTeam: {
+        name: newEvent.homeTeamName,
+        officialName: newEvent.homeTeamName,
+      },
+      awayTeam: {
+        name: newEvent.awayTeamName,
+        officialName: newEvent.awayTeamName,
+      },
+      // season: parseInt(newEvent.season, 10),
+      season: newEvent.season,
+      status: newEvent.status,
+      // timeVenueUTC: '',
+      dateVenue: newEvent.dateVenue,
+      // stadium: null,
+      result: {
+        homeGoals: 0,
+        awayGoals: 0,
+        winner: null,
+      },
+    };
+
+    // Pass the newEventObject to the onAddEvent function
+    onAddEvent(newEventObject);
+
     setNewEvent({
       homeTeamName: '',
       awayTeamName: '',
@@ -26,7 +45,8 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
       status: '',
       dateVenue: '',
     });
-    console.log('You clicked submit.');
+
+    // Close the AddEvent form
     setAddEventOpen(false);
   }
 
