@@ -7,11 +7,17 @@ const EventModal = ({ isOpen, closeModal, eventData }) => {
         <h2>Event details</h2>
         {eventData && (
           <div>
-            <p>Home team name: {eventData.homeTeam?.name}</p>
-            <p>Away team name: {eventData.awayTeam?.name}</p>
-            {/*season: '', status: ' */}
-            {/* <p>Match date: {eventData.dateVenue}</p>
-            <p>Season: {eventData.season}</p> */}
+            <p>Home team name: {eventData.homeTeam?.officialName}</p>
+            <p>Away team name: {eventData.awayTeam?.officialName}</p>
+            <p>Match date: {eventData.dateVenue}</p>
+            <p>Season: {eventData.season}</p>
+            <p>Winner: {eventData.result.winner}</p>
+            <p>
+              Result
+              <div>Home goals: {eventData.result.homeGoals}</div>
+              <div>Away goals: {eventData.result.awayGoals}</div>
+            </p>
+            <p>Status: {eventData.status}</p>
           </div>
         )}
         <button onClick={closeModal}>Close</button>
