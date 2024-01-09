@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Modal from 'react-modal';
 
 export default function AddEvent({ onAddEvent, setAddEventOpen }) {
   const [newEvent, setNewEvent] = useState({
@@ -7,6 +8,7 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
     season: '',
     status: '',
     result: '',
+    timeVenueUTC: '',
     dateVenue: '',
   });
 
@@ -25,7 +27,7 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
       // season: parseInt(newEvent.season, 10),
       season: newEvent.season,
       status: newEvent.status,
-      // timeVenueUTC: '',
+      timeVenueUTC: newEvent.timeVenueUTC,
       dateVenue: newEvent.dateVenue,
       // stadium: null,
       result: {
@@ -60,47 +62,53 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Enter home team name"
-        name="homeTeamName"
-        value={newEvent.homeTeamName}
-        onChange={handleChange}
-        required
-      />
-      <input
-        placeholder="Enter away team name"
-        name="awayTeamName"
-        value={newEvent.awayTeamName}
-        onChange={handleChange}
-        required
-      />
-      <input
-        placeholder="Enter season"
-        name="season"
-        value={newEvent.season}
-        onChange={handleChange}
-        required
-      />
-      <input
-        placeholder="Enter event status"
-        name="status"
-        value={newEvent.status}
-        onChange={handleChange}
-        required
-      />
-      <input
-        placeholder="Enter date"
-        name="dateVenue"
-        value={newEvent.dateVenue}
-        onChange={handleChange}
-        required
-      />
+    <Modal
+      isOpen={true}
+      onRequestClose={() => setAddEventOpen(false)}
+      contentLabel="Add Event Modal"
+    >
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Enter home team name"
+          name="homeTeamName"
+          value={newEvent.homeTeamName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          placeholder="Enter away team name"
+          name="awayTeamName"
+          value={newEvent.awayTeamName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          placeholder="Enter season"
+          name="season"
+          value={newEvent.season}
+          onChange={handleChange}
+          required
+        />
+        <input
+          placeholder="Enter event status"
+          name="status"
+          value={newEvent.status}
+          onChange={handleChange}
+          required
+        />
+        <input
+          placeholder="Enter date"
+          name="dateVenue"
+          value={newEvent.dateVenue}
+          onChange={handleChange}
+          required
+        />
 
-      <button type="submit">Add</button>
-      <button type="button" onClick={() => setAddEventOpen(false)}>
-        Cancel
-      </button>
-    </form>
+        <button type="submit">Add</button>
+        <button type="button" onClick={() => setAddEventOpen(false)}>
+          Cancel
+        </button>
+      </form>
+    </Modal>
   );
 }
