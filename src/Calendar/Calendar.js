@@ -68,17 +68,28 @@ export default function Calendar() {
 
   return (
     <main className={styles.calendarMain}>
-      <section className={styles.monthHeader}>
-        <button onClick={() => handleOpenAddEvent()} className={styles.navBtn}>
+      <section className={styles.monthMainHeader}>
+        <button
+          onClick={() => handleOpenAddEvent()}
+          className={styles.addEventBtn}
+        >
           Add Event
         </button>
-        <button onClick={prevMonth} className={styles.navBtn}>
-          Prev
-        </button>
-        <h2>{format(monthNavigation, 'MMMM yyyy')}</h2>
-        <button onClick={nextMonth} className={styles.navBtn}>
-          Next
-        </button>
+        <div className={styles.monthHeader}>
+          <div>
+            <h2 className={styles.calendarH2}>
+              {format(monthNavigation, 'MMMM yyyy')}
+            </h2>
+          </div>
+          <div className={styles.monthNavBtn}>
+            <button onClick={prevMonth} className={styles.navBtns}>
+              Prev
+            </button>
+            <button onClick={nextMonth} className={styles.navBtns}>
+              Next
+            </button>
+          </div>
+        </div>
       </section>
       <div className={styles.daysOfWeek}>
         {daysOfWeek.map((day) => (
@@ -98,29 +109,25 @@ export default function Calendar() {
             className={styles.gridNumberDay}
           >
             {format(day, 'd')}
-
-            {eventList.map((event, eventIndex) => {
-              const formattedDate = format(day, 'yyyy-MM-dd');
-              if (event.dateVenue === formattedDate) {
-                return (
-                  <div key={`event-${eventIndex}`}>
-                    <p>
-                      Event: {event.homeTeam?.officialName} vs {''}
-                      {event.awayTeam?.officialName}
-                    </p>
-                  </div>
-                );
-              }
-              return null;
-            })}
+            <div className={styles.gridNumberDayIndicator}>
+              {eventList.map((event, eventIndex) => {
+                const formattedDate = format(day, 'yyyy-MM-dd');
+                if (event.dateVenue === formattedDate) {
+                  return (
+                    <div key={`event-${eventIndex}`}>
+                      <div className={styles.eventIndicatorsContainer}>
+                        {/* Event: {event.homeTeam?.name} vs {''}
+                      {event.awayTeam?.name} */}
+                        <div className={styles.eventIndicator}>•</div>
+                      </div>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
           </div>
         ))}
-
-        {/* //
-          // const eventData = sportData.data.find(
-          //   (event) => event.dateVenue === formattedDate,
-          // const eventsOnDay = eventList.filter(
-            // (event) => event.dateVenue === formattedDate, */}
       </section>
       <EventModal
         isOpen={modalIsOpen}
