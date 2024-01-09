@@ -105,9 +105,9 @@ export default function Calendar() {
                 return (
                   <div key={`event-${eventIndex}`}>
                     <p>
-                      Event: {event.homeTeam?.name} vs {event.awayTeam?.name}
+                      Event: {event.homeTeam?.officialName} vs {''}
+                      {event.awayTeam?.officialName}
                     </p>
-                    {/* <p>Time: {event.timeVenueUTC}</p> */}
                   </div>
                 );
               }
