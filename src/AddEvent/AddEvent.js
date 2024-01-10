@@ -120,7 +120,7 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
               onClick={() => setAddEventOpen(false)}
               className={styles.addCloseBtn}
             >
-              Back to Calendar
+              Back
             </button>
           </div>
         </div>

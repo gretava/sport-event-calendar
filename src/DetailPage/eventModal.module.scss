@@ -15,7 +15,7 @@
   height: 80%;
   width: 100%;
   max-width: 500px;
-  background-color: rgba(163, 169, 175, 0.9);
+  background-color: rgba(206, 208, 210, 0.9);
   border-radius: 20px;
 }
 
@@ -41,16 +41,17 @@ p {
 }
 
 .closeBtn {
-  width: 5rem;
-  height: 2rem;
-  font-size: 0.9rem;
-  border-radius: 0.5rem;
+  width: 6rem;
+  height: 3rem;
+  padding: 0.4rem 0;
+  font-size: 1rem;
+  border-radius: 45px;
   border: none;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
   background-color: #154b94;
   color: rgb(221, 220, 218);
   cursor: pointer;
-  margin-left: 1.5rem;
-  margin-top: 1rem;
 }
 
 .closeBtn:active {

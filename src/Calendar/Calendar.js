@@ -65,15 +65,24 @@ export default function Calendar() {
     setAddEventOpen(true);
   };
 
+  const handleCurrentMonth = () => {
+    setMonthNavigation(new Date());
+  };
+
   return (
     <main className={styles.calendarMain}>
       <section className={styles.monthMainHeader}>
-        <button
-          onClick={() => handleOpenAddEvent()}
-          className={styles.addEventBtn}
-        >
-          Add Event
-        </button>
+        <div className={styles.calendarEventBtns}>
+          <button onClick={handleCurrentMonth} className={styles.homeBtn}>
+            Home
+          </button>
+          <button
+            onClick={() => handleOpenAddEvent()}
+            className={styles.addEventBtn}
+          >
+            Add Event
+          </button>
+        </div>
         <h2 className={styles.calendarH2}>
           {format(monthNavigation, 'MMMM yyyy')}
         </h2>

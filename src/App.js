@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Calendar for sport events</h1>
+        <h1>Sport events calendar</h1>
         <Calendar />
       </header>
     </div>

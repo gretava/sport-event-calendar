@@ -19,7 +19,7 @@
   height: 80%;
   width: 100%;
   max-width: 500px;
-  background-color: rgba(163, 169, 175, 0.9);
+  background-color: rgba(206, 208, 210, 0.9);
   border-radius: 20px;
 }
 
@@ -50,16 +50,16 @@ input {
 .modalBtns {
   display: flex;
   justify-content: space-around;
-  width: 16rem;
-  padding-top: 1rem;
+  width: 20rem;
+  padding-top: 3rem;
 }
 
 .addCloseBtn {
-  width: 6rem;
+  width: 8rem;
   height: 3rem;
   padding: 0.4rem 0;
   font-size: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 45px;
   border: none;
   background-color: #154b94;
   color: rgb(221, 220, 218);

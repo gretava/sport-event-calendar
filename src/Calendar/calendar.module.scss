@@ -22,7 +22,31 @@
 
 .calendarH2 {
   width: 12rem;
+  color: #e0e0e0;
   text-align: center;
+}
+
+.calendarEventBtns {
+  display: flex;
+  justify-content: space-around;
+  width: 11rem;
+}
+
+.homeBtn {
+  width: 5rem;
+  height: 2rem;
+  font-size: 0.9rem;
+  border-radius: 45px;
+  border: none;
+  background-color: #e0e0e0;
+  font-weight: 560;
+  cursor: pointer;
+  position: relative;
+}
+
+.homeBtn:active {
+  background-color: #828b9b;
+  opacity: 0.8;
 }
 
 .monthNavBtn {
@@ -35,7 +59,7 @@
   width: 3.5rem;
   height: 2rem;
   font-size: 0.9rem;
-  border-radius: 0.5rem;
+  border-radius: 45px;
   border: none;
   background-color: #e0e0e0;
   font-weight: 560;
@@ -52,11 +76,27 @@
   width: 5.5rem;
   height: 2rem;
   font-size: 0.9rem;
-  border-radius: 0.5rem;
+  border-radius: 45px;
   font-weight: 560;
+  // border: 2px solid rgb(255, 140, 0);
   border: none;
-  background-color: #e0e0e0;
+  // background-color: gradient(red, yellow);
+  // background-color: rgb(252, 197, 128);
   cursor: pointer;
+
+  background-image: linear-gradient(
+    to right,
+    #eb3349 0%,
+    #f45c43 51%,
+    #eb3349 100%
+  );
+
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  // box-shadow: 0 0 5px #eee;
+  display: block;
 }
 
 .addEventBtn:active {
