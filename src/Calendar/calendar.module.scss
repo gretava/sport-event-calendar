@@ -78,24 +78,18 @@
   font-size: 0.9rem;
   border-radius: 45px;
   font-weight: 560;
-  // border: 2px solid rgb(255, 140, 0);
   border: none;
-  // background-color: gradient(red, yellow);
-  // background-color: rgb(252, 197, 128);
   cursor: pointer;
-
   background-image: linear-gradient(
     to right,
     #eb3349 0%,
     #f45c43 51%,
     #eb3349 100%
   );
-
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
-  // box-shadow: 0 0 5px #eee;
   display: block;
 }
 
