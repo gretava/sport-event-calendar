@@ -24,7 +24,6 @@ export default function Calendar() {
   const currentDate = new Date();
   const month = currentDate.toLocaleString('en-AT', { month: 'long' });
   const year = currentDate.getFullYear();
-  // const date = currentDate.getDate();
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const firstDayOfMonth = startOfWeek(startOfMonth(monthNavigation), {
@@ -75,59 +74,55 @@ export default function Calendar() {
         >
           Add Event
         </button>
-        <div className={styles.monthHeader}>
-          <div>
-            <h2 className={styles.calendarH2}>
-              {format(monthNavigation, 'MMMM yyyy')}
-            </h2>
-          </div>
-          <div className={styles.monthNavBtn}>
-            <button onClick={prevMonth} className={styles.navBtns}>
-              Prev
-            </button>
-            <button onClick={nextMonth} className={styles.navBtns}>
-              Next
-            </button>
-          </div>
+        <h2 className={styles.calendarH2}>
+          {format(monthNavigation, 'MMMM yyyy')}
+        </h2>
+        <div className={styles.monthNavBtn}>
+          <button onClick={prevMonth} className={styles.navBtns}>
+            Prev
+          </button>
+          <button onClick={nextMonth} className={styles.navBtns}>
+            Next
+          </button>
         </div>
       </section>
-      <div className={styles.daysOfWeek}>
-        {daysOfWeek.map((day) => (
-          <div className={styles.dayOfWeek} key={day}>
-            {day}
-          </div>
-        ))}
-      </div>
-      <section className={styles.gridNumberDays}>
-        {Array.from({ length: startingDayIndex }).map((_, index) => (
-          <div key={`empty-${index}`} />
-        ))}
-        {allDaysInMonth.map((day, index) => (
-          <div
-            key={index}
-            onClick={() => handleDateClickAndShowEvents(day)}
-            className={styles.gridNumberDay}
-          >
-            {format(day, 'd')}
-            <div className={styles.gridNumberDayIndicator}>
-              {eventList.map((event, eventIndex) => {
-                const formattedDate = format(day, 'yyyy-MM-dd');
-                if (event.dateVenue === formattedDate) {
-                  return (
-                    <div key={`event-${eventIndex}`}>
-                      <div className={styles.eventIndicatorsContainer}>
-                        {/* Event: {event.homeTeam?.name} vs {''}
-                      {event.awayTeam?.name} */}
-                        <div className={styles.eventIndicator}>•</div>
-                      </div>
-                    </div>
-                  );
-                }
-                return null;
-              })}
+      <section className={styles.weekAdnDays}>
+        <div className={styles.daysOfWeek}>
+          {daysOfWeek.map((day) => (
+            <div className={styles.dayOfWeek} key={day}>
+              {day}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className={styles.gridNumberDays}>
+          {Array.from({ length: startingDayIndex }).map((_, index) => (
+            <div key={`empty-${index}`} />
+          ))}
+          {allDaysInMonth.map((day, index) => (
+            <div
+              key={index}
+              onClick={() => handleDateClickAndShowEvents(day)}
+              className={styles.gridNumberDay}
+            >
+              {format(day, 'd')}
+              <div className={styles.gridNumberDayIndicator}>
+                {eventList.map((event, eventIndex) => {
+                  const formattedDate = format(day, 'yyyy-MM-dd');
+                  if (event.dateVenue === formattedDate) {
+                    return (
+                      <div key={`event-${eventIndex}`}>
+                        <div className={styles.eventIndicatorsContainer}>
+                          <div className={styles.eventIndicator}>•</div>
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
       <EventModal
         isOpen={modalIsOpen}

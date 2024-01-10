@@ -15,7 +15,7 @@
   height: 80%;
   width: 100%;
   max-width: 500px;
-  background-color: rgba(255, 255, 255, 0.72);
+  background-color: rgba(163, 169, 175, 0.9);
   border-radius: 20px;
 }
 
@@ -38,7 +38,6 @@ span {
 
 p {
   height: 0.8rem;
-  // margin-top: 1rem;
 }
 
 .closeBtn {
@@ -47,13 +46,14 @@ p {
   font-size: 0.9rem;
   border-radius: 0.5rem;
   border: none;
-  background-color: #cc9a52;
+  background-color: #154b94;
+  color: rgb(221, 220, 218);
   cursor: pointer;
   margin-left: 1.5rem;
   margin-top: 1rem;
 }
 
 .closeBtn:active {
-  background-color: #c78932;
+  background-color: #828b9b;
   opacity: 0.8;
 }

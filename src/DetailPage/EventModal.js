@@ -2,10 +2,6 @@ import Modal from 'react-modal';
 import styles from './eventModal.module.scss';
 
 const EventModal = ({ isOpen, closeModal, eventData }) => {
-  // const capitalizeFirstLetter = (str) => {
-  //   return str.charAt(0).toUpperCase() + str.slice(1);
-  // };
-
   return (
     <Modal
       isOpen={isOpen}

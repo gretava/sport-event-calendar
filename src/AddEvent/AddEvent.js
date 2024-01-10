@@ -25,12 +25,10 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
         name: newEvent.awayTeamName,
         officialName: newEvent.awayTeamName,
       },
-      // season: parseInt(newEvent.season, 10),
       season: newEvent.season,
       status: newEvent.status,
       timeVenueUTC: newEvent.timeVenueUTC,
       dateVenue: newEvent.dateVenue,
-      // stadium: null,
       result: {
         homeGoals: 0,
         awayGoals: 0,
@@ -38,7 +36,6 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
       },
     };
 
-    // Pass the newEventObject to the onAddEvent function
     onAddEvent(newEventObject);
 
     setNewEvent({
@@ -50,7 +47,6 @@ export default function AddEvent({ onAddEvent, setAddEventOpen }) {
       dateVenue: '',
     });
 
-    // Close the AddEvent form
     setAddEventOpen(false);
   }
 
